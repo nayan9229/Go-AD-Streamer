@@ -14,6 +14,7 @@ func (s *Server) routes() chi.Router {
 	r.Get("/healthz", chassis.Health)
 	r.Get("/html", chassis.HtmlHandler(s.HtmlHandler))
 	r.Get("/json", chassis.SimpleHandler(s.JsonHandler))
+	r.Get("/stream", chassis.SimpleHandler(s.StartStream))
 
 	r.Route("/users", func(r chi.Router) {
 		r.Get("/", chassis.SimpleHandler(s.GetUsers))
